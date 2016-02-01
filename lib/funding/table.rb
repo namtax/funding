@@ -1,7 +1,5 @@
 module Funding
   class Table
-    NUMBER_OF_DIVISORS = 2
-
     def initialize(number)
       @number = number
       @primes = fetch_prime_numbers
@@ -30,16 +28,10 @@ module Funding
 
       while prime_numbers.size < number
         index += 1.0
-        prime_numbers << index if is_prime_number?(index)
+        prime_numbers << index if index.prime_number?
       end
 
       prime_numbers
-    end
-
-    def is_prime_number?(number)
-      (1..number).map{|x| number / x }
-        .select{ |x| x % 1 == 0 }
-        .size == NUMBER_OF_DIVISORS
     end
   end
 end
