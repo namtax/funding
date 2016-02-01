@@ -15,14 +15,12 @@ module Funding
     attr_reader :number, :primes
 
     def header
-      [1.0, *primes]
+      [nil, *primes]
     end
 
     def rows
-      primes.map do |pm|
-        header.map do |h|
-          h * pm
-        end
+      primes.map.with_index do |pm, i|
+        [primes[i], *primes.map { |pm| pm * primes[i] }]
       end
     end
 
