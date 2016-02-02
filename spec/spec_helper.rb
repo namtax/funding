@@ -1,4 +1,5 @@
 require 'pry'
+require 'core_ext/float'
 require 'funding/table'
 require 'funding/prime'
-require 'core_ext/float'
+require 'funding/row'

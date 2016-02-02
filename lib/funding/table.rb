@@ -1,8 +1,7 @@
 module Funding
   class Table
-    def initialize(number)
-      @number = number
-      @primes = Prime.first(number)
+    def initialize(count)
+      @primes = Prime.first(count)
     end
 
     def to_s
@@ -10,18 +9,14 @@ module Funding
     end
 
     private
-    attr_reader :number, :primes
+    attr_reader :primes
 
     def header
       [nil, *primes]
     end
 
     def rows
-      primes.map { |p| [p, *multiples(p)] }
-    end
-
-    def multiples(p)
-      primes.map { |pm| pm * p }
+      primes.map { |p| Row.new(p, primes).show }
     end
   end
 end
