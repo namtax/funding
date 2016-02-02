@@ -2,7 +2,7 @@ module Funding
   class Table
     def initialize(number)
       @number = number
-      @primes = fetch_prime_numbers
+      @primes = Prime.first(number)
     end
 
     def to_s
@@ -17,21 +17,11 @@ module Funding
     end
 
     def rows
-      primes.map.with_index do |pm, i|
-        [primes[i], *primes.map { |pm| pm * primes[i] }]
-      end
+      primes.map { |p| [p, *multiples(p)] }
     end
 
-    def fetch_prime_numbers
-      prime_numbers = []
-      index = 1.0
-
-      while prime_numbers.size < number
-        index += 1.0
-        prime_numbers << index if index.prime_number?
-      end
-
-      prime_numbers
+    def multiples(p)
+      primes.map { |pm| pm * p }
     end
   end
 end
