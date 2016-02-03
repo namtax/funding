@@ -1,4 +1,4 @@
-describe Float do
+describe Numeric do
   describe '#prime_number?' do
     context 'prime number' do
       it { expect(2.to_f).to be_prime_number }
