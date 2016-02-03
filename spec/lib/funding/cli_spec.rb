@@ -4,11 +4,11 @@ module Funding
     let(:table) { double }
     let(:input) { ['--­­count', '10­'] }
 
-    before do
-      allow(table).to receive(:run).with(10, anything).and_return(['table'])
-    end
-
     context 'valid input' do
+      before do
+        allow(table).to receive(:run).with(10, anything).and_return(['table'])
+      end
+
       it { expect(subject.run(['--count', '10'], table)).to eq(['table']) }
     end
 
@@ -22,6 +22,10 @@ module Funding
 
       context 'invalid option' do
         it { subject.run(['--c', '10'], table) }
+      end
+
+      context 'value too high' do
+        it { subject.run(['--count', '26'], table) }
       end
 
       context 'value missing' do
