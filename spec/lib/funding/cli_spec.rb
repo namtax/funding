@@ -5,7 +5,7 @@ module Funding
     let(:input) { ['--­­count', '10­'] }
 
     before do
-      allow(table).to receive(:run).with(10).and_return(['table'])
+      allow(table).to receive(:run).with(10, anything).and_return(['table'])
     end
 
     context 'valid input' do

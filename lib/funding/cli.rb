@@ -1,12 +1,12 @@
 module Funding
   class CLI
-    def self.run(input, table)
+    def self.run(input, tt = Funding::TerminalTable)
       opts = fetch_options(input)
 
-      if opts[:count].nil?
-        puts 'Please supply valid input'
+      if count = opts[:count]
+        tt.run(count, Table.new(count))
       else
-        table.run(opts[:count].to_i)
+        puts 'Please supply valid input'
       end
     end
 

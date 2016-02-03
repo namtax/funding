@@ -6,7 +6,7 @@ module Funding
 
       while prime_numbers.size < number
         index += 1.0
-        prime_numbers << index if index.prime_number?
+        prime_numbers << Integer(index) if index.prime_number?
       end
 
       prime_numbers

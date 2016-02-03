@@ -4,13 +4,6 @@ module Funding
       @primes = Prime.first(count)
     end
 
-    def to_s
-      [header, *rows]
-    end
-
-    private
-    attr_reader :primes
-
     def header
       [nil, *primes]
     end
@@ -18,5 +11,8 @@ module Funding
     def rows
       primes.map { |p| Row.new(p, primes).show }
     end
+
+    private
+    attr_reader :primes
   end
 end
