@@ -1,5 +1,7 @@
+require 'slop'
 require 'pry'
 require 'core_ext/float'
 require 'funding/table'
 require 'funding/prime'
 require 'funding/row'
+require 'funding/cli'
