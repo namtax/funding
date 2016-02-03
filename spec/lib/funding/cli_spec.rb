@@ -13,8 +13,12 @@ module Funding
     end
 
     context 'invalid input' do
-      let(:error) { 'Please supply valid input' }
-      before      { expect(subject).to receive(:puts).with(error) }
+      let(:error) { /Please supply valid input/ }
+
+      before do
+        expect(subject).to receive(:puts).with(error)
+        expect(subject).to receive(:puts).with(anything)
+      end
 
       context 'invalid option' do
         it { subject.run(['--c', '10'], table) }
